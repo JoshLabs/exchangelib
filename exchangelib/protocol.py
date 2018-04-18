@@ -229,6 +229,7 @@ class Protocol(with_metaclass(CachingProtocol, BaseProtocol)):
                 pass
             self.version = Version.guess(self)
 
+
         # Used by services to process service requests that are able to run in parallel. Thread pool should be
         # larger than the connection pool so we have time to process data without idling the connection.
         # Create the pool as the last thing here, since we may fail in the version or auth type guessing, which would

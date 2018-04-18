@@ -75,3 +75,26 @@ class ServiceAccount(Credentials):
     @property
     def fail_fast(self):
         return False
+
+
+class OAuthCredentials(Credentials):
+    """
+    Dummy OAuth Credential Class
+    """
+
+    def __init__(self, client_id, token):
+        self.client_id = client_id
+        self.token = token
+        super(OAuthCredentials, self).__init__(username="", password="")
+
+    def __eq__(self, other):
+        return self.client_id == other.client_id and self.token == other.token
+
+    def __hash__(self):
+        return hash((self.client_id, self.token['access_token']))
+
+    def __repr__(self):
+        return self.__class__.__name__ + repr((self.client_id, '********'))
+
+    def __str__(self):
+        return self.client_id
