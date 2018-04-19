@@ -79,7 +79,9 @@ class ServiceAccount(Credentials):
 
 class OAuthCredentials(Credentials):
     """
-    Dummy OAuth Credential Class
+    Simple OAuth Credential Class
+    It does not handle refresh token or OAuth Provisioning
+    It is only responsible for storing tokens, so that we can pass that in EWS SOAP Reuqest Header
     """
 
     def __init__(self, client_id, token):

@@ -99,7 +99,7 @@ def get_auth_instance(credentials, auth_type):
 def get_autodiscover_authtype(service_endpoint, data):
     # First issue a HEAD request to look for a location header. This is the autodiscover HTTP redirect method. If there
     # was no redirect, continue trying a POST request with a valid payload.
-    return OAUTH2
+    return OAUTH2       # We only want to support OAUTH2 request, so short-circuit
     # log.debug('Getting autodiscover auth type for %s', service_endpoint)
     # from .autodiscover import AutodiscoverProtocol
     # with requests.sessions.Session() as s:
@@ -124,7 +124,7 @@ def get_autodiscover_authtype(service_endpoint, data):
 
 def get_docs_authtype(docs_url):
     # Get auth type by tasting headers from the server. Don't do HEAD requests. It's too error prone.
-    return OAUTH2
+    return OAUTH2   # We only want to support OAUTH2 request, so short-circuit
     # log.debug('Getting docs auth type for %s', docs_url)
     # from .protocol import BaseProtocol
     # with requests.sessions.Session() as s:
@@ -135,7 +135,7 @@ def get_docs_authtype(docs_url):
 
 
 def get_service_authtype(service_endpoint, versions, name):
-    return OAUTH2
+    return OAUTH2   # We only want to support OAUTH2 request, so short-circuit
     # # Get auth type by tasting headers from the server. Only do POST requests. HEAD is too error prone, and some servers
     # # are set up to redirect to OWA on all requests except POST to /EWS/Exchange.asmx
     # log.debug('Getting service auth type for %s', service_endpoint)
@@ -160,7 +160,7 @@ def get_service_authtype(service_endpoint, versions, name):
 
 
 def _get_auth_method_from_response(response):
-    return OAUTH2
+    return OAUTH2   # We only want to support OAUTH2 request, so short-circuit
     # # First, get the auth method from headers. Then, test credentials. Don't handle redirects - burden is on caller.
     # log.debug('Request headers: %s', response.request.headers)
     # log.debug('Response headers: %s', response.headers)
