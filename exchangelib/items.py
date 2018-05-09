@@ -564,15 +564,19 @@ class CalendarItem(Item):
         return [f for f in cls.FIELDS if isinstance(f, TimeZoneField)]
 
     def clean_timezone_fields(self, version):
+        """
+        This is causing issue when updating start and end times
+        So commenting for now
+        """
         # Sets proper values on the timezone fields and returns the fields that were set
-        if version.build < EXCHANGE_2010:
-            self._meeting_timezone = self.start.tzinfo if self.start else None
-            self._start_timezone = None
-            self._end_timezone = None
-        else:
-            self._meeting_timezone = None
-            self._start_timezone = self.start.tzinfo if self.start else None
-            self._end_timezone = self.end.tzinfo if self.end else None
+        # if version.build < EXCHANGE_2010:
+        #     self._meeting_timezone = self.start.tzinfo if self.start else None
+        #     self._start_timezone = None
+        #     self._end_timezone = None
+        # else:
+        #     self._meeting_timezone = None
+        #     self._start_timezone = self.start.tzinfo if self.start else None
+        #     self._end_timezone = self.end.tzinfo if self.end else None
 
     def clean(self, version=None):
         # pylint: disable=access-member-before-definition
