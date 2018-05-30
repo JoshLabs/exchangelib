@@ -563,7 +563,7 @@ class FreeBusyView(EWSElement):
         kwargs = {}
         for f in cls.FIELDS:
             if f.name == 'working_hours':
-                kwargs[f.name] = f.from_xml(elem=elem.find('{%s}WorkingHours' % TNS), account=account)
+                # kwargs[f.name] = f.from_xml(elem=elem.find('{%s}WorkingHours' % TNS), account=account)
                 continue
             kwargs[f.name] = f.from_xml(elem=elem, account=account)
         elem.clear()
